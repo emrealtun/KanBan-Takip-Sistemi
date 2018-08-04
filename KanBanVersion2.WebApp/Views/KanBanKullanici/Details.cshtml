@@ -1,0 +1,108 @@
+﻿@model KanBanVersion2.Entities.KanBanKullanici
+
+@{
+    ViewBag.Title = "Detaylar";
+}
+
+
+<div class="col-md-12">
+    <div class="col-md-3">
+        &nbsp;
+    </div>
+    <div class="col-md-9">
+        <h2 style="text-align:center;">Detaylar</h2>
+
+        <h4>Kullanıcı</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.soyad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.soyad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.kullaniciadi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.kullaniciadi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sifre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sifre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.aktifDurum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.aktifDurum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adminDurum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adminDurum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.olusturmaTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.olusturmaTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.guncellemeTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.guncellemeTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.duzenleyen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.duzenleyen)
+            </dd>
+
+        </dl>
+
+        <p>
+            @Bootstrap.LinkButton("/KanBanKullanici/Edit/" + Model.Id, "outline-info", string.Empty, string.Empty, "edit", " Düzenle")
+            @Bootstrap.LinkButton("/KanBanKullanici/Index", "outline-secondary", string.Empty, string.Empty, "arrow-left", " Listeye Dön")
+
+
+
+        </p>
+    </div>
+</div>

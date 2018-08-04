@@ -1,0 +1,125 @@
+﻿@using KanBanVersion2.BusinessLayer
+@using KanBanVersion2.Entities
+@model List<Todo>
+@{
+    ProjectManager pm = new ProjectManager();
+    List<Proje> list = pm.List();
+    KanBanKullanici kk = Session["login"] as KanBanKullanici;
+}
+
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<div class="btn-group " role="group" style="margin-left:20px;">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Projeyi Seçiniz
+    </button>
+
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+
+        @foreach (Proje p in list)
+        {
+            <a class="dropdown-item" href="/Profil/ByProje/@p.Id">@p.projeAd</a>
+        }
+
+
+    </div>
+</div>
+
+@if (kk.adminDurum)
+{
+    <div class="btn-group" role="group">
+        <button type="button" style="float:right; margin-right:10px;" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-wrench"></i>
+            Yönetim
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" href="/Proje/Index"><b>Proje </b></a><hr />
+            <a class="dropdown-item" href="/Todo/Index"><b>Todo</b></a><hr />
+            <a class="dropdown-item" href="/KanBanKullanici/Index"><b>Kullanıcı</b></a>
+
+        </div>
+    </div>
+
+
+}
+<a href="/Profil/ProfilDuzenle" style="float:right; margin-right:10px;" class="btn btn-secondary btn-lg" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-wrench"></i>
+    Profili Düzenle
+</a>
+
+<h2 style="text-align:center;">TODO LİSTESİ</h2>
+<hr />
+
+
+
+<div class="row">
+
+    @foreach (Todo todo in Model)
+    {
+        <div class="col-xl-4 col-sm-6 mb-3">
+            <div class="card " style="margin-left:20px;margin-right:20px  ">
+
+                <div class="card-header text-white bg-info ">
+                    <h4 style="text-align:center;">@todo.todoAdi</h4>
+
+                </div>
+                <div class="card-body">
+                    <p>
+                        @if (string.IsNullOrEmpty(todo.todoAciklama) == false && todo.todoAciklama.Length > 250)
+                        {
+                            @(todo.todoAciklama.Substring(0, 250))
+                        }
+                        else
+                        {
+                            @(todo.todoAciklama)
+                        }
+
+
+
+                    </p>
+
+
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted">
+
+                        <span class="fa fa-user">
+                            @foreach (TodoKullanicisi todokullanicisi in todo.todoKullanicisi)
+                            {
+                                @todokullanicisi.kanbankullanici.kullaniciadi;
+                            }
+                        </span><br />
+                        <span class="fa fa-clock-o"> @("Oluşturma: " + todo.olusturmaTarihi.ToString("dd.MM.yy") + "   Güncelleme: " + todo.guncellemeTarihi.ToString("dd.MM.yy"))</span>
+
+                    </div>
+                    <div style="float:right;" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <button type="button" class="btn buttonrenk ">Düzenle</button>
+
+                        <div class="btn-group" style="color:#17A2B8;" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn buttonrenk  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gönder
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="#">TODO DURUMLARINI SIRALA</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+</div>

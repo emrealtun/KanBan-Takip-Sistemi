@@ -1,0 +1,70 @@
+﻿@using KanBanVersion2.Entities
+@using KanBanVersion2.WebApp.Models
+@model List<Yorum>
+<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+@{
+    KanBanKullanici kullanici = CurrentSession.kullanici;
+
+}
+@foreach (Yorum yorum in Model)
+{
+    <div class="media">
+
+        <div class="align-self-center">
+            <span class="fa fa-comment">
+            </span>
+        </div>
+
+        <div class="media-body col-md-12">
+            <div>
+                <span class="col-md-9" id="yorum_text_@yorum.Id" contenteditable="false">
+                    @yorum.icerik
+                </span>
+                @if (kullanici != null && kullanici.Id == yorum.kullanici.Id)
+                {
+                    <span class="col-md-3 ">
+                        <button type="button" class="btn btn-warning btn-xs " data-edit-mode="false" onclick="yorumEdit(this,'edit_click',@yorum.Id);">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs " onclick="yorumEdit(this,'delete_click',@yorum.Id);">
+                            <span class="fa fa-trash"></span>
+                        </button>
+                    </span>
+
+                }
+
+
+                <small class="col-md-12 " style="text-align:right;">
+                    <span class="fa fa-clock-o">
+                        @yorum.olusturmaTarihi &nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
+                    <span class="fa fa-user"> @yorum.kullanici.kullaniciadi </span>
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+}
+
+@if (kullanici != null)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Yorum yap.." />
+                <span class="input-group-btn">
+                    <button class="btn btn-success" type="button" onclick="yorumEdit(this,'new_click',-1);">
+                        <span class="fa fa-send"></span>Yorum Yap
+
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+}        

@@ -1,0 +1,109 @@
+﻿@model KanBanVersion2.Entities.KanBanKullanici
+
+@{
+    ViewBag.Title = "Kullanıcıyı Sil";
+}
+
+
+
+<h3>&nbsp;&nbsp;Bu kullanıcıyı silmek istediğinizden emin misiniz?</h3>
+<div>
+    <hr />
+    <div style="margin-left:auto" class="col-md-12">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.soyad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.soyad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.kullaniciadi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.kullaniciadi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.sifre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.sifre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.aktifDurum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.aktifDurum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.adminDurum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.adminDurum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.olusturmaTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.olusturmaTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.guncellemeTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.guncellemeTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.duzenleyen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.duzenleyen)
+            </dd>
+
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            &nbsp;&nbsp;
+            @Bootstrap.Button("danger", string.Empty, "submit", "remove", "  Sil")
+            @Bootstrap.LinkButton("/KanBanKullanici/Index", "secondary", string.Empty, string.Empty, "arrow-left", "    Listeye Dön")
+
+        </div>
+    }
+</div>

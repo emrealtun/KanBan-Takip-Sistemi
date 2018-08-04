@@ -1,0 +1,88 @@
+﻿@model IEnumerable<KanBanVersion2.Entities.Todo>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container-fluid">
+<div class="col-md-12">
+
+        <h2 style="text-align:center;">Todo</h2>
+
+        <p>
+            <a href="/Todo/Create" style="float:right;margin-right:20px;" class="btn btn-outline-success"><span class="fa fa-plus"></span> Todo Oluştur </a>
+        </p>
+    <br />
+        
+        <table class="table">
+            <br />
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.proje.projeAd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.todoAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.todoAciklama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.taslakDurum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.todoDurumu)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.olusturmaTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guncellemeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.duzenleyen)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.proje.projeAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.todoAdi)
+                    </td>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.aciklamaOzet )
+                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.taslakDurum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.todoDurumu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.olusturmaTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.guncellemeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.duzenleyen)
+                    </td>
+                    <td>
+                        @Bootstrap.LinkButton("/Todo/Edit/" + item.Id, "warning", "btn-sm", "Düzenle", "edit", " ")
+
+                        @Bootstrap.LinkButton("/Todo/Details/" + item.Id, "info", "btn-sm", "Detaylar", "search", " ")
+
+                        @Bootstrap.LinkButton("/Todo/Delete/" + item.Id, "danger", "btn-sm", "Sil", "trash", " ")
+                       
+                 
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+   
+</div>

@@ -1,0 +1,91 @@
+﻿@model KanBanVersion2.Entities.Todo
+
+@{
+    ViewBag.Title = "Detaylar";
+}
+
+<div class="col-md-12">
+    <div class="col-md-3">
+        &nbsp;
+    </div>
+    <div class="col-md-9">
+        <h2 style="text-align:center;">Detaylar</h2>
+
+        <h4>Todo</h4>
+        <hr />
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.proje.projeAd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.proje.projeAd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.todoAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.todoAdi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.todoAciklama)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.todoAciklama)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.taslakDurum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.taslakDurum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.todoDurumu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.todoDurumu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.olusturmaTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.olusturmaTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.guncellemeTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.guncellemeTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.duzenleyen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.duzenleyen)
+            </dd>
+
+        </dl>
+        <p>
+            @Bootstrap.LinkButton("/Todo/Edit/" + Model.Id, "outline-info", string.Empty, string.Empty, "edit", " Düzenle")
+            @Bootstrap.LinkButton("/Todo/Index", "outline-secondary", string.Empty, string.Empty, "arrow-left", " Listeye Dön")
+
+
+
+        </p>
+    </div>
+</div>

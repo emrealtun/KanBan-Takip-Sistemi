@@ -1,0 +1,68 @@
+﻿@model KanBanVersion2.Entities.Todo
+
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Content/myprojectcss.css" rel="stylesheet" />
+
+<div class="container-fluid">
+    <div class="col-md-12">
+        <h2>Todo Oluştur</h2>
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(false)
+            <div class="form-group">
+                @Html.LabelFor(model => model.projeId, "projeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("projeId", null, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.todoAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.todoAdi, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.todoAciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.todoAciklama, 6, 30, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.taslakDurum, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.taslakDurum)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.todoDurumu, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.todoDurumu, htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3">
+                    @Bootstrap.Button("success", string.Empty, "submit", "plus", "  Oluştur")
+                    @Bootstrap.LinkButton("/KanBanKullanici/Index", "secondary", string.Empty, string.Empty, "arrow-left", "   Listeye Dön")
+
+                </div>
+            </div>
+        
+         }
+
+    </div>
+ </div>
+
+
+

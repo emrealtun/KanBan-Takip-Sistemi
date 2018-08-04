@@ -1,0 +1,94 @@
+﻿@model IEnumerable<KanBanVersion2.Entities.KanBanKullanici>
+
+@{
+    ViewBag.Title = "Kullanıcılar";
+}
+
+<h2 style="text-align:center;">Kullanıcılar</h2>
+
+<p>
+
+    <a href="Create" style="float:right;margin-right:20px;" class="btn btn-outline-success"><span class="fa fa-plus"></span> Kullanıcı Oluştur </a>
+</p>
+<br />
+
+<table class="table">
+    <br />
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kullaniciadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aktifDurum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adminDurum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.olusturmaTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.guncellemeTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duzenleyen)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kullaniciadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sifre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aktifDurum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adminDurum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.olusturmaTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.guncellemeTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duzenleyen)
+            </td>
+            <td>
+                @Bootstrap.LinkButton("/KanBanKullanici/Edit/" + item.Id, "warning", "btn-sm", "Düzenle", "edit", " Düzenle")
+
+                @Bootstrap.LinkButton("/KanBanKullanici/Details/" + item.Id, "info", "btn-sm", "Detaylar", "search", " Detaylar")
+
+                @Bootstrap.LinkButton("/KanBanKullanici/Delete/" + item.Id, "danger", "btn-sm", "Sİl", "trash", " Sil")
+            </td>
+        </tr>
+    }
+
+</table>

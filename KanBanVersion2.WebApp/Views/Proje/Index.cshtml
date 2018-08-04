@@ -1,0 +1,70 @@
+﻿@using KanBanVersion2.WebApp
+@model IEnumerable<KanBanVersion2.Entities.Proje>
+
+@{
+    ViewBag.Title = "Projeler";
+}
+
+<h2 style="text-align:center;">Projeler</h2>
+
+<p>
+    <a href="Create" style="float:right;margin-right:20px;" class="btn btn-outline-success"><span class="fa fa-plus"></span> Proje Oluştur </a>
+
+</p>
+<br />
+
+        <table class="table">
+            <br/>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.projeAd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.projeAciklamasi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.olusturmaTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.guncellemeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.duzenleyen)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projeAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.projeAciklamasi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.olusturmaTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.guncellemeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.duzenleyen)
+                    </td>
+                    <td>
+                        @Bootstrap.LinkButton("/Proje/Edit/" + item.Id, "warning", "btn-sm", "Düzenle", "edit", " Düzenle")
+
+                        @Bootstrap.LinkButton("/Proje/Details/" + item.Id, "info", "btn-sm", "Detaylar", "search", " Detaylar")
+
+                        @Bootstrap.LinkButton("/Proje/Delete/" + item.Id, "danger", "btn-sm", "Sİl", "trash", " Sil")
+
+                     
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+  
+

@@ -1,0 +1,6 @@
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\bin\Debug\KanBanVersion2.Common.dll
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\bin\Debug\KanBanVersion2.Common.pdb
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\obj\Debug\KanBanVersion2.Common.csprojAssemblyReference.cache
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\obj\Debug\KanBanVersion2.Common.csproj.CoreCompileInputs.cache
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\obj\Debug\KanBanVersion2.Common.dll
+C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Common\obj\Debug\KanBanVersion2.Common.pdb
