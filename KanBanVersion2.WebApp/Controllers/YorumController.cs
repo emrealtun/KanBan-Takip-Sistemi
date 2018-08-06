@@ -22,7 +22,7 @@ namespace KanBanVersion2.WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Todo todo = todoManager.Find(x => x.Id == id);
+            Todo todo = todoManager.ListQueryable().Include("Yorum").FirstOrDefault(x => x.Id == id);
 
             if (todo == null)
             {
@@ -35,11 +35,11 @@ namespace KanBanVersion2.WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(int? id, string text)
         {
-            if(ModelState.IsValid)
+           
+
+            if (ModelState.IsValid)
             {
-                ModelState.Remove("duzenleyen");
-                ModelState.Remove("olusturmaTarihi");
-                ModelState.Remove("guncellemeTarihi");
+               
 
                 if (id == null)
             {
@@ -56,7 +56,7 @@ namespace KanBanVersion2.WebApp.Controllers
             yorum.icerik = text;
             if (yorumManager.Update(yorum) > 0)
             {
-                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
             }
         }            return Json(new { result = false }, JsonRequestBehavior.AllowGet);
 
@@ -84,13 +84,14 @@ namespace KanBanVersion2.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Yorum yorum,int? todoid)
+        public ActionResult Create(Yorum yorum, int? todoid)
         {
-            if(ModelState.IsValid)
+            ModelState.Remove("duzenleyen");
+            ModelState.Remove("olusturmaTarihi");
+            ModelState.Remove("guncellemeTarihi");
+            if (ModelState.IsValid)
             {
-                ModelState.Remove("duzenleyen");
-                ModelState.Remove("olusturmaTarihi");
-                ModelState.Remove("guncellemeTarihi");
+
 
                 if (todoid == null)
                 {
@@ -98,17 +99,18 @@ namespace KanBanVersion2.WebApp.Controllers
                 }
 
                 Todo todo = todoManager.Find(x => x.Id == todoid);
-                if (todo == null)
+                if(todo==null)
                 {
                     return new HttpNotFoundResult();
                 }
                 yorum.todo = todo;
-                yorum.kullanici = CurrentSession.kullanici;
-
+                yorum.kullanici= CurrentSession.kullanici;
+                
                 if (yorumManager.Insert(yorum) > 0)
                 {
                     return Json(new { result = true }, JsonRequestBehavior.AllowGet);
                 }
+
             }
                 return Json(new { result = false }, JsonRequestBehavior.AllowGet);
         }

@@ -80,7 +80,21 @@ namespace KanBanVersion2.WebApp.Controllers
             return View(todo);
         }
 
-        
+        public ActionResult GetTodoDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Todo todo = todoManager.Find(x => x.Id == id.Value);
+            if (todo == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView("_PartialTodoDetails", todo);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Todo todo)

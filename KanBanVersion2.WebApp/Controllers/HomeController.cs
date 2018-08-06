@@ -28,7 +28,23 @@ namespace KanBanVersion2.WebApp.Controllers
 
         public ActionResult Todo()
         {
-            return View(tm.ListQueryable().OrderByDescending(x=> x.guncellemeTarihi).ToList());
+            return View(tm.ListQueryable().Where(x=> x.taslakDurum==false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x=> x.guncellemeTarihi).ToList());
+        }
+        public ActionResult Analyze()
+        {
+            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.ANALYZE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+        }
+        public ActionResult Develop()
+        {
+            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DEVELOP).OrderByDescending(x => x.guncellemeTarihi).ToList());
+        }
+        public ActionResult Test()
+        {
+            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TEST).OrderByDescending(x => x.guncellemeTarihi).ToList());
+        }
+        public ActionResult Done()
+        {
+            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DONE).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
 
         public ActionResult ByProje(int? id)
@@ -43,8 +59,8 @@ namespace KanBanVersion2.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-
-            return View("Todo", p.Todo.OrderByDescending(x=> x.guncellemeTarihi).ToList());
+                
+            return View("Todo", p.Todo.Where(x => x.taslakDurum == false).OrderByDescending(x=> x.guncellemeTarihi).ToList());
          }
 
         public ActionResult Login()

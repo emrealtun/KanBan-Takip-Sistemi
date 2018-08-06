@@ -4,15 +4,15 @@
     ViewBag.Title = "Index";
 }
 <div class="container-fluid">
-<div class="col-md-12">
+    <div class="col-md-12">
 
         <h2 style="text-align:center;">Todo</h2>
 
         <p>
             <a href="/Todo/Create" style="float:right;margin-right:20px;" class="btn btn-outline-success"><span class="fa fa-plus"></span> Todo Oluştur </a>
         </p>
-    <br />
-        
+        <br />
+
         <table class="table">
             <br />
             <tr>
@@ -52,9 +52,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.todoAdi)
                     </td>
-                        <td>
-                        @Html.DisplayFor(modelItem => item.aciklamaOzet )
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aciklamaOzet)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.taslakDurum)
                     </td>
@@ -76,13 +76,17 @@
                         @Bootstrap.LinkButton("/Todo/Details/" + item.Id, "info", "btn-sm", "Detaylar", "search", " ")
 
                         @Bootstrap.LinkButton("/Todo/Delete/" + item.Id, "danger", "btn-sm", "Sil", "trash", " ")
-                       
-                 
+
+                         <button class="btn btn-success btn-sm"  type="button" data-toggle="modal" data-target="#modal_yorum" data-todo-id="@item.Id">
+                             <span class="fa fa-comment"></span>
+                         </button>
                     </td>
                 </tr>
             }
-
         </table>
     </div>
-   
 </div>
+
+@Bootstrap.ModalPopup(id: "modal_yorum", title: "Yorumlar")
+
+<script src="~/Scripts/yorum.js"></script>

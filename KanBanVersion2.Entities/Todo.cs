@@ -59,5 +59,5 @@ namespace KanBanVersion2.Entities
         DEVELOP,
         TEST,
         DONE
-    }
+    };
 }

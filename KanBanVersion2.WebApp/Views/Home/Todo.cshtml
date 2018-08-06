@@ -11,7 +11,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="btn-group " role="group" style="margin-left:20px;">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Projeyi Seçiniz
@@ -21,14 +20,10 @@
         {
             <a class="dropdown-item" href="/Home/ByProje/@p.Id">@p.projeAd</a>
         }
-
     </div>
 </div>
-
-<h2 style="text-align:center;">TODO LİSTESİ</h2>
+<h2 style="text-align:center;">TODO LİSTE</h2>
 <hr />
-
-
 <div class="row">
 
     @foreach (Todo todo in Model)
@@ -38,23 +33,18 @@
 
                 <div class="card-header text-white bg-info ">
                     <h4 style="text-align:center;">@todo.todoAdi</h4>
-
                 </div>
                 <div class="card-body">
                     <p>
                         @if (string.IsNullOrEmpty(todo.todoAciklama) == false && todo.todoAciklama.Length > 250)
                         {
-                            @(todo.todoAciklama.Substring(0, 250))
+                            @(todo.todoAciklama.Substring(0, 150))
                         }
                         else
                         {
                             @(todo.todoAciklama)
                         }
-
-
-
                     </p>
-
 
                 </div>
                 <div class="card-footer">
@@ -64,12 +54,15 @@
                             @foreach (TodoKullanicisi todokullanicisi in todo.todoKullanicisi)
                             {
                                 @todokullanicisi.kanbankullanici.kullaniciadi;
+                                @Html.Raw("&nbsp;");
                             }
                         </span><br />
                         <span class="fa fa-clock-o"> @("Oluşturma: " + todo.olusturmaTarihi.ToString("dd.MM.yy") + "   Güncelleme: " + todo.guncellemeTarihi.ToString("dd.MM.yy"))</span>
 
                     </div>
                     <div style="float:right;" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <button type="button" data-toggle="modal" data-target="#modal_tododetay" class="btn buttonrenk" data-todo-id="@todo.Id">Detaylar</button>
+
                         <button type="button" data-toggle="modal" data-target="#modal_yorum" class="btn buttonrenk" data-todo-id="@todo.Id">Yorumlar</button>
 
                         <div class="btn-group" style="color:#17A2B8;" role="group">
@@ -78,7 +71,6 @@
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a class="dropdown-item" href="#">TODO DURUMLARINI SIRALA</a>
-
                             </div>
                         </div>
                     </div>
@@ -90,116 +82,9 @@
     }
 </div>
 
-
-
 @Bootstrap.ModalPopup(id: "modal_yorum", title: "Yorumlar")
-<script>
+@Bootstrap.ModalPopup(id: "modal_tododetay", title: "Todo Detay")
 
-    var modalYorumBodyId = "#modal_yorum_body";
-    var todoid = -1;
+<script src="~/Scripts/yorum.js"></script>
 
-    $(function () {
-        $('#modal_yorum').on('show.bs.modal', function (e) {
-
-            var btn = $(e.relatedTarget);
-            var todoid = btn.data("todo-id");
-            $(modalYorumBodyId).load("/Yorum/ShowTodoYorum/" + todoid);
-        })
-    });
-
-    function yorumEdit(btn, e, yorumId, spanId) {
-
-        var button = $(btn);
-        var mode = button.data("edit-mode");
-
-        if (e === "edit_click") {
-            if (!mode) {
-                button.data("edit-mode", true);
-                button.removeClass("btn-warning");
-                button.addClass("btn-success");
-                var btnSpan = button.find("span");
-                btnSpan.removeClass("fa-edit");
-                btnSpan.addClass("fa-thumbs-up");
-
-                $(spanId).addClass("editable");
-                $(spanId).attr("contenteditable", true);
-                $(spanId).focus();
-
-
-            }
-            else {
-                button.data("edit-mode", false);
-                button.addClass("btn-warning");
-                button.removeClass("btn-success");
-                var btnSpan = button.find("span");
-                btnSpan.addClass("fa-edit");
-                btnSpan.removeClass("fa-thumbs-up");
-
-                $(spanId).removeClass("editable");
-                $(spanId).attr("contenteditable", false);
-
-                var txt = $(spanId).text();
-
-                $.ajax({
-                    method: "POST",
-                    url: "/Yorum/Edit/" + yorumId,
-                    data: { text: txt }
-                }).done(function (data) {
-                    if (data.result) {
-                        //yorumlar tekrar yüklenir
-                        $(modalYorumBodyId).load("/Yorum/ShowTodoYorum/" + todoid);
-                    }
-                    else {
-                        alert("Yorum güncellenemedi");
-                    }
-                }).fail(function () {
-                    alert("Sunucu ile bağlantı kurulamadı.");
-                });
-
-            }
-
-        }
-        else if (e === "delete_click") {
-            var dialog_res = confirm("Yorumu silmek istediğinizden emin misiniz?");
-
-            if (!dialog_res) return false;
-
-            $.ajax({
-                method: "GET",
-                url: "/Yorum/Delete/" + yorumId
-            }).done(function (data) {
-                if (data.result) {   
-                    //yorumlar tekrar yüklenir
-                    $(modalYorumBodyId).load("/Yorum/ShowTodoYorum/" + todoid); }
-                else{
-                    alert("Yorum silinemedi");
-                }
-                }).fail(function () {
-                    alert("Sunucu ile bağlantı kurulamadı.");
-                })
-        }
-
-        else if (e === "new_click") {
-
-            var txt = $("#new_yorum_text").val()
-            $.ajax({
-                method: "POST",
-                url: "/Yorum/Create/" + yorumId,
-                data: { icerik: txt, "todo_Id": todoid }
-            }).done(function (data) {
-                if (data.result) {
-                    //yorumlar tekrar yüklenir
-                    $(modalYorumBodyId).load("/Yorum/ShowTodoYorum/" + todoid);
-                }
-                else {
-                    alert("Yorum yapılamadı");
-                }
-            }).fail(function () {
-                alert("Sunucu ile bağlantı kurulamadı.");
-            })
-        }
-
-    }
-</script>
-
-
+<script src="~/Scripts/tododetails.js"></script>

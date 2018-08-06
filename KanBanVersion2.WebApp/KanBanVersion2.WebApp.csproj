@@ -120,6 +120,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\tododetails.js" />
+    <Content Include="Scripts\yorum.js" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -279,6 +281,11 @@
     <Content Include="Views\Todo\Edit.cshtml" />
     <Content Include="Views\Todo\Index.cshtml" />
     <Content Include="Views\Shared\_PartialYorumlar.cshtml" />
+    <Content Include="Views\Home\Analyze.cshtml" />
+    <Content Include="Views\Home\Develop.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Home\Done.cshtml" />
+    <Content Include="Views\Shared\_PartialTodoDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

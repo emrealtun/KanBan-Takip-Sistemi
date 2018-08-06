@@ -4,3 +4,9 @@ C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.csproj.CoreCompileInputs.cache
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.dll
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.pdb
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\bin\Debug\KanBanVersion2.Entities.dll
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\bin\Debug\KanBanVersion2.Entities.pdb
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.csprojAssemblyReference.cache
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.csproj.CoreCompileInputs.cache
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.dll
+C:\Users\EMREE\Documents\VisualStudio2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.Entities\obj\Debug\KanBanVersion2.Entities.pdb

@@ -1,0 +1,83 @@
+﻿@using KanBanVersion2.BusinessLayer
+@using KanBanVersion2.Entities
+@using KanBanVersion2.WebApp.Models
+@model List<Todo>
+@{
+    List<Proje> list = CacheHelper.GetProjectFromCache();
+}
+
+@{
+    ViewBag.Title = "Analyze";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-group " role="group" style="margin-left:20px;">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Projeyi Seçiniz
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        @foreach (Proje p in list)
+        {
+            <a class="dropdown-item" href="/Home/ByProje/@p.Id">@p.projeAd</a>
+        }
+    </div>
+</div>
+<h2 style="text-align:center;">ANALYZE LİST</h2>
+<hr />
+<div class="row">
+
+    @foreach (Todo todo in Model)
+    {
+        <div class="col-xl-4 col-sm-6 mb-3">
+            <div class="card " style="margin-left:20px;margin-right:20px  ">
+
+                <div class="card-header text-white bg-info ">
+                    <h4 style="text-align:center;">@todo.todoAdi</h4>
+                </div>
+                <div class="card-body">
+                    <p>
+                        @if (string.IsNullOrEmpty(todo.todoAciklama) == false && todo.todoAciklama.Length > 250)
+                        {
+                            @(todo.todoAciklama.Substring(0, 250))
+                        }
+                        else
+                        {
+                            @(todo.todoAciklama)
+                        }
+                    </p>
+
+                </div>
+                <div class="card-footer">
+                    <div class="text-muted">
+
+                        <span class="fa fa-user">
+                            @foreach (TodoKullanicisi todokullanicisi in todo.todoKullanicisi)
+                            {
+                                @todokullanicisi.kanbankullanici.kullaniciadi;
+                            }
+                        </span><br />
+                        <span class="fa fa-clock-o"> @("Oluşturma: " + todo.olusturmaTarihi.ToString("dd.MM.yy") + "   Güncelleme: " + todo.guncellemeTarihi.ToString("dd.MM.yy"))</span>
+
+                    </div>
+                    <div style="float:right;" class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                        <button type="button" data-toggle="modal" data-target="#modal_yorum" class="btn buttonrenk" data-todo-id="@todo.Id">Yorumlar</button>
+
+                        <div class="btn-group" style="color:#17A2B8;" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn buttonrenk  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gönder
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                <a class="dropdown-item" href="#">TODO DURUMLARINI SIRALA</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@Bootstrap.ModalPopup(id: "modal_yorum", title: "Yorumlar")
+<script src="~/Scripts/yorum.js"></script>
