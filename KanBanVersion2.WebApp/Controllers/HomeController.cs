@@ -4,6 +4,7 @@ using KanBanVersion2.BusinessLayer.Results;
 using KanBanVersion2.Entities;
 using KanBanVersion2.Entities.Mesajlar;
 using KanBanVersion2.Entities.ValueObjects;
+using KanBanVersion2.WebApp.Filters;
 using KanBanVersion2.WebApp.Models;
 using KanBanVersion2.WebApp.ViewModels;
 using System;
@@ -15,38 +16,40 @@ using System.Web.Mvc;
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    [Exc] 
     public class HomeController : Controller
     {
         TodoManager tm = new TodoManager();
         ProjectManager pm = new ProjectManager();
         KullaniciManager km = new KullaniciManager();
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult Todo()
         {
+            
             return View(tm.ListQueryable().Where(x=> x.taslakDurum==false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x=> x.guncellemeTarihi).ToList());
         }
+        [Auth]
         public ActionResult Analyze()
         {
             return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.ANALYZE).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
+        [Auth]
         public ActionResult Develop()
         {
             return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DEVELOP).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
+        [Auth]
         public ActionResult Test()
         {
             return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TEST).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
+
+        [Auth]
         public ActionResult Done()
         {
             return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DONE).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
-
+        [Auth]
         public ActionResult ByProje(int? id)
         {
             if(id==null)
@@ -147,13 +150,24 @@ namespace KanBanVersion2.WebApp.Controllers
 
             return View("Ok",ok);
         }
-
+        [Auth]
         public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Login");
         }
-     }
+
+        public ActionResult AccessDenied()
+        {
+            return View();
+        }
+        
+        public ActionResult Exception()
+        {
+            return View();
+        }
+
+    }
  }
 
     

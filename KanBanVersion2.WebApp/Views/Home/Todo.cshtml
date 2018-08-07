@@ -22,7 +22,7 @@
         }
     </div>
 </div>
-<h2 style="text-align:center;">TODO LİSTE</h2>
+<h2 style="text-align:center;">TODO LİST</h2>
 <hr />
 <div class="row">
 
@@ -32,13 +32,25 @@
             <div class="card " style="margin-left:20px;margin-right:20px  ">
 
                 <div class="card-header text-white bg-info ">
-                    <h4 style="text-align:center;">@todo.todoAdi</h4>
+                    <h4 style="text-align:center;">
+                        @if (string.IsNullOrEmpty(todo.todoAdi) == false && todo.todoAdi.Length > 70)
+                        {
+                            @(todo.todoAdi.Substring(0, 70))
+                            @Html.Raw("...")
+
+                        }
+                        else
+                        {
+                            @(todo.todoAdi)
+                        }
+                    </h4>
                 </div>
                 <div class="card-body">
                     <p>
-                        @if (string.IsNullOrEmpty(todo.todoAciklama) == false && todo.todoAciklama.Length > 250)
+                        @if (string.IsNullOrEmpty(todo.todoAciklama) == false && todo.todoAciklama.Length > 240)
                         {
-                            @(todo.todoAciklama.Substring(0, 150))
+                            @(todo.todoAciklama.Substring(0, 240))
+                            @Html.Raw("...")
                         }
                         else
                         {

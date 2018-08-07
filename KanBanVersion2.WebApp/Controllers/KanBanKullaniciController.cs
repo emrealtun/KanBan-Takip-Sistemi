@@ -9,9 +9,12 @@ using System.Web.Mvc;
 using KanBanVersion2.BusinessLayer;
 using KanBanVersion2.BusinessLayer.Results;
 using KanBanVersion2.Entities;
+using KanBanVersion2.WebApp.Filters;
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    [Auth] [AuthAdmin]
+    [Exc]
     public class KanBanKullaniciController : Controller
     {
         private KullaniciManager km = new KullaniciManager();
@@ -93,7 +96,7 @@ namespace KanBanVersion2.WebApp.Controllers
                     res.Hata.ForEach(x => ModelState.AddModelError("", x.Mesaj));
                     return View(kanBanKullanici);
                 }
-                return RedirectToAction("Index"); return RedirectToAction("Index");
+                return RedirectToAction("Index"); 
             }
             return View(kanBanKullanici);
         }

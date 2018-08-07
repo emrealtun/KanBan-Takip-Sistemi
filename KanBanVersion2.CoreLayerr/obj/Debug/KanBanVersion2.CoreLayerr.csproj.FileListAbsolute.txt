@@ -4,3 +4,9 @@ C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.csproj.CoreCompileInputs.cache
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.dll
 C:\Users\EMREE\Documents\Visual Studio 2015\Projects\udemyegitim\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.pdb
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\bin\Debug\KanBanVersion2.CoreLayerr.dll
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\bin\Debug\KanBanVersion2.CoreLayerr.pdb
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.csprojAssemblyReference.cache
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.csproj.CoreCompileInputs.cache
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.dll
+C:\Users\EMREE\Desktop\KanBanSolution\KanBanVersion2.CoreLayerr\obj\Debug\KanBanVersion2.CoreLayerr.pdb

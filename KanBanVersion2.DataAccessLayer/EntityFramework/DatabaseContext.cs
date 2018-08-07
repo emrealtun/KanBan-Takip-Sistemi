@@ -19,7 +19,7 @@ namespace KanBanVersion2.DataAccessLayer.EntityFramework
 
         public DatabaseContext()
         {
-            Database.SetInitializer(new MyInitiliazer());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext,KanBanVersion2.DataAccessLayer.Migrations.Configuration>());
         }
 
 

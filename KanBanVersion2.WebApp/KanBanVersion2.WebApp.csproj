@@ -161,6 +161,9 @@
     <Compile Include="Controllers\ProjeController.cs" />
     <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Controllers\YorumController.cs" />
+    <Compile Include="Filters\Auth.cs" />
+    <Compile Include="Filters\AuthAdmin.cs" />
+    <Compile Include="Filters\Exc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,7 +254,6 @@
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -286,6 +288,8 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\Done.cshtml" />
     <Content Include="Views\Shared\_PartialTodoDetails.cshtml" />
+    <Content Include="Views\Home\AccessDenied.cshtml" />
+    <Content Include="Views\Home\Exception.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

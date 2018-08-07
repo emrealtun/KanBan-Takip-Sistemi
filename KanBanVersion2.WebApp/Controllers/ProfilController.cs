@@ -12,12 +12,16 @@ using KanBanVersion2.BusinessLayer.Results;
 using KanBanVersion2.Entities;
 using KanBanVersion2.Entities.Mesajlar;
 using KanBanVersion2.Entities.ValueObjects;
+using KanBanVersion2.WebApp.Filters;
 using KanBanVersion2.WebApp.Models;
 using KanBanVersion2.WebApp.ViewModels;
 
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    [Auth]
+    [AuthAdmin]
+    [Exc]
     public class ProfilController : Controller
     {
         KullaniciManager km = new KullaniciManager();

@@ -1,5 +1,6 @@
 ﻿using KanBanVersion2.BusinessLayer;
 using KanBanVersion2.Entities;
+using KanBanVersion2.WebApp.Filters;
 using KanBanVersion2.WebApp.Models;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ using System.Web.Mvc;
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    [Auth]
+    [Exc]
     public class YorumController : Controller
     {
         private TodoManager todoManager = new TodoManager();

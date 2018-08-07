@@ -8,10 +8,13 @@ using System.Web;
 using System.Web.Mvc;
 using KanBanVersion2.BusinessLayer;
 using KanBanVersion2.Entities;
+using KanBanVersion2.WebApp.Filters;
 using KanBanVersion2.WebApp.Models;
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    [Auth]
+    [AuthAdmin]
     public class TodoController : Controller
     {
         TodoManager todoManager = new TodoManager();

@@ -17,7 +17,7 @@ namespace KanBanVersion2.Entities
         [DisplayName("Todo Adı"),Required]
         public string todoAdi{ get; set; }
 
-        [DisplayName("Todo Açıklaması"), Required, StringLength(150)]
+        [DisplayName("Todo Açıklaması"), Required, StringLength(2000)]
         public string todoAciklama { get; set; }
 
         [NotMapped]
