@@ -16,39 +16,62 @@ using System.Web.Mvc;
 
 namespace KanBanVersion2.WebApp.Controllers
 {
+    
+
     [Exc] 
     public class HomeController : Controller
     {
+        
         TodoManager tm = new TodoManager();
         ProjectManager pm = new ProjectManager();
         KullaniciManager km = new KullaniciManager();
 
-        public ActionResult Todo()
+        
+         
+        public ActionResult Todo(Proje p)
         {
-            
-            return View(tm.ListQueryable().Where(x=> x.taslakDurum==false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x=> x.guncellemeTarihi).ToList());
+
+            p = CurrentSession.kullanici.secilenProje ;
+           
+            return View("Todo", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
         [Auth]
-        public ActionResult Analyze()
+        public ActionResult Analyze(Proje p)
+
         {
-            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.ANALYZE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+            p = CurrentSession.kullanici.secilenProje;
+                
+            return View("Analyze", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.ANALYZE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
         }
         [Auth]
-        public ActionResult Develop()
+        public ActionResult Develop(Proje p)
+
         {
-            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DEVELOP).OrderByDescending(x => x.guncellemeTarihi).ToList());
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Develop", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DEVELOP).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
         }
         [Auth]
-        public ActionResult Test()
+        public ActionResult Test(Proje p)
+
         {
-            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TEST).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Test", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TEST).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
         }
 
         [Auth]
-        public ActionResult Done()
+        public ActionResult Done(Proje p)
+
         {
-            return View(tm.ListQueryable().Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DONE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Done", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DONE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
         }
+
         [Auth]
         public ActionResult ByProje(int? id)
         {
@@ -62,9 +85,19 @@ namespace KanBanVersion2.WebApp.Controllers
             {
                 return HttpNotFound();
             }
-                
-            return View("Todo", p.Todo.Where(x => x.taslakDurum == false).OrderByDescending(x=> x.guncellemeTarihi).ToList());
+
+            CurrentSession.kullanici.secilenProje = p;
+
+            return RedirectToAction("Todo");
+          //  return View("Todo", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x=> x.guncellemeTarihi).ToList());
          }
+
+
+        public ActionResult SelectProject()
+        {
+
+            return View();
+        }
 
         public ActionResult Login()
         {
@@ -88,7 +121,7 @@ namespace KanBanVersion2.WebApp.Controllers
                 return View(model);
             }
             CurrentSession.Set<KanBanKullanici>("login",res.Result);//session kullanıcı bilgi saklama
-           return RedirectToAction("Todo");
+           return RedirectToAction("SelectProject");
         }
 
         public ActionResult Register( )

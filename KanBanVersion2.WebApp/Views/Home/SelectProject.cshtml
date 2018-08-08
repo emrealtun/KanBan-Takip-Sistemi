@@ -1,0 +1,27 @@
+﻿@using KanBanVersion2.BusinessLayer
+@using KanBanVersion2.Entities
+@using KanBanVersion2.WebApp.Models
+@model List<Todo>
+@{
+    List<Proje> list = CacheHelper.GetProjectFromCache();
+}
+
+@{
+    ViewBag.Title = "Proje Seç";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-group " role="group" style="margin-left:20px;">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Projeyi Seçiniz
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        @foreach (Proje p in list)
+        {
+            <a class="dropdown-item" href="/Home/ByProje/@p.Id">@p.projeAd</a>
+        }
+
+        {
+        }
+    </div>
+</div>

@@ -37,6 +37,8 @@ namespace KanBanVersion2.Entities
         [DisplayName("Adminlik Durumu")]
         public bool adminDurum{ get; set; }
 
+        public Proje secilenProje { get; set; }
+
         public virtual List<TodoKullanicisi> todoKullanicisi { get; set; }
         public virtual List<Yorum> Yorum { get; set; }
         public virtual List<ProjeKullanicisi> projeKullanicisi  { get; set; }

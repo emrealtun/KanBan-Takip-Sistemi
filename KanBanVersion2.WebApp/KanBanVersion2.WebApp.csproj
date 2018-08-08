@@ -290,6 +290,7 @@
     <Content Include="Views\Shared\_PartialTodoDetails.cshtml" />
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
+    <Content Include="Views\Home\SelectProject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

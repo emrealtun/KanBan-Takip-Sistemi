@@ -1,6 +1,12 @@
 ﻿@using KanBanVersion2.Entities
 @using KanBanVersion2.WebApp.Models
 
+@{ 
+    KanBanKullanici kk = null;
+
+    kk = CurrentSession.kullanici as KanBanKullanici;
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +47,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a style="text-align:center" class="navbar-brand" href="/Home/Todo">KanBan    </a>
+        <a style="text-align:center" class="navbar-brand" href="/Home/SelectProject">KanBan    </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -95,9 +101,7 @@
                         <span class="d-lg-none">
                             Son Yapılanlar
                         </span>
-                        <span class="indicator text-primary d-none d-lg-block">
-                            <i class="fa fa-fw fa-circle"></i>
-                        </span>
+                       
                     </a>
                     <div class="dropdown-menu" aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">Son Yapılanlar</h6>
@@ -124,12 +128,54 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link  mr-lg-2" href="/Profil/Profil">
-                        <i class="fa fa-user-circle"></i> 
-                    </a>
+                 
+                    <a class="nav-link dropdown-toggle mr-lg-4" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                </li>
-                <li class="nav-item">
+                        <i class="fa fa-user-circle"></i>
+                        <span class="d-lg-none">
+                            Alerts
+                        </span>
+                       
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                        <h4 style="text-align:right;" class="dropdown-header">
+                            <strong>
+                                @Html.Raw("@")
+                                @if (kk != null)
+                                {
+                                    @kk.kullaniciadi
+                                }
+                            </strong>
+                        </h4>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Profil/MyList">
+                            <span class="text-secondary">
+                                <strong>
+                                    My Lists
+                                </strong>
+                            </span>
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Profil/MyList">
+                            <span class="text-secondary">
+                                <strong>
+                                    Profili Düzenle
+                                </strong>
+                            </span>
+
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Profil/MyList">
+                            <span class="text-secondary">
+                                <strong>
+                                    Yönetim
+                                </strong>
+                            </span>
+                        </a> 
+                    </div>
+
+                    <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Arama Yap...">
