@@ -28,14 +28,51 @@ namespace KanBanVersion2.WebApp.Controllers
         TodoManager tm = new TodoManager();
         ProjectManager pm = new ProjectManager();
 
-
-
-
-        // GET: Profil
-        public ActionResult Profil()
+        public ActionResult Todo(Proje p)
         {
-            return View(tm.ListQueryable().OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+            p = CurrentSession.kullanici.secilenProje;
+
+            return View("Todo", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x => x.guncellemeTarihi).ToList());
         }
+        [Auth]
+        public ActionResult Analyze(Proje p)
+
+        {
+            p = CurrentSession.kullanici.secilenProje;
+
+            return View("Analyze", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.ANALYZE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+        }
+        [Auth]
+        public ActionResult Develop(Proje p)
+
+        {
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Develop", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DEVELOP).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+        }
+        [Auth]
+        public ActionResult Test(Proje p)
+
+        {
+
+
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Test", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TEST).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+        }
+
+        [Auth]
+        public ActionResult Done(Proje p)
+
+        {
+            p = CurrentSession.kullanici.secilenProje;
+            return View("Done", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.DONE).OrderByDescending(x => x.guncellemeTarihi).ToList());
+
+        }
+
+        [Auth]
         public ActionResult ByProje(int? id)
         {
             if (id == null)
@@ -49,8 +86,24 @@ namespace KanBanVersion2.WebApp.Controllers
                 return HttpNotFound();
             }
 
-            return View("Todo", p.Todo.OrderByDescending(x => x.guncellemeTarihi).ToList());
+            CurrentSession.kullanici.secilenProje = p;
+
+            return RedirectToAction("Todo");
         }
+
+
+        public ActionResult SelectProject()
+        {
+
+            return View();
+        }
+
+
+        public ActionResult Profil()
+        {
+            return View(tm.ListQueryable().OrderByDescending(x => x.guncellemeTarihi).ToList());
+        }
+        
         public ActionResult ProfilDuzenle()
         {
             BusinessLayerResult<KanBanKullanici> res = km.GetUserById(CurrentSession.kullanici.Id);

@@ -1,7 +1,7 @@
 ﻿@using KanBanVersion2.Entities
 @using KanBanVersion2.WebApp.Models
 
-@{ 
+@{
     KanBanKullanici kk = null;
 
     kk = CurrentSession.kullanici as KanBanKullanici;
@@ -54,33 +54,33 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Todo">
-                    <a class="nav-link" href="/Home/Todo">
+                    <a class="nav-link" href="/Profil/Todo">
 
                         <i class="fa fa-list-ul"> &nbsp;&nbsp;</i>
                         <span style="font-size:x-large" class="nav-link-text">TODO</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Analyze">
-                    <a class="nav-link" href="/Home/Analyze">
+                    <a class="nav-link" href="/Profil/Analyze">
                         <i class="fa fa-fw fa-sitemap"> </i>
                         <span style="font-size:x-large" class="nav-link-text">&nbsp;ANALYZE</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Develop">
-                    <a class="nav-link" href="/Home/Develop">
+                    <a class="nav-link" href="/Profil/Develop">
                         <i class="fa fa-code">&nbsp;&nbsp;</i>
 
                         <span style="font-size:x-large" class="nav-link-text">DEVELOP</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Test">
-                    <a class="nav-link" href="/Home/Test">
+                    <a class="nav-link" href="/Profil/Test">
                         <i class="fa fa-area-chart">&nbsp;&nbsp;</i>
                         <span style="font-size:x-large" class="nav-link-text">TEST</span>
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Done">
-                    <a class="nav-link" href="/Home/Done">
+                    <a class="nav-link" href="/Profil/Done">
                         <i class="fa fa-check-square">&nbsp;&nbsp;&nbsp;</i>
                         <span style="font-size:x-large" class="nav-link-text">DONE</span>
                     </a>
@@ -101,7 +101,7 @@
                         <span class="d-lg-none">
                             Son Yapılanlar
                         </span>
-                       
+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">Son Yapılanlar</h6>
@@ -128,14 +128,14 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                 
+
                     <a class="nav-link dropdown-toggle mr-lg-4" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         <i class="fa fa-user-circle"></i>
                         <span class="d-lg-none">
-                            @kk.kullaniciadi
+                            Alerts
                         </span>
-                       
+
                     </a>
                     <div class="dropdown-menu" aria-labelledby="alertsDropdown">
                         <h4 style="text-align:right;" class="dropdown-header">
@@ -148,7 +148,7 @@
                             </strong>
                         </h4>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Profil/SelectProject">
+                        <a class="dropdown-item" href="/Profil/MyList">
                             <span class="text-secondary">
                                 <strong>
                                     My Lists
@@ -157,7 +157,7 @@
 
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Profil/ProfilDuzenle">
+                        <a class="dropdown-item" href="/Profil/MyList">
                             <span class="text-secondary">
                                 <strong>
                                     Profili Düzenle
@@ -166,16 +166,16 @@
 
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Todo/Index">
+                        <a class="dropdown-item" href="/Profil/MyList">
                             <span class="text-secondary">
                                 <strong>
                                     Yönetim
                                 </strong>
                             </span>
-                        </a> 
+                        </a>
                     </div>
 
-                    <li class="nav-item">
+                <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Arama Yap...">
@@ -231,3 +231,4 @@
     </div>
 </body>
 </html>
+

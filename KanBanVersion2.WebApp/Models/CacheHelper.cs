@@ -10,6 +10,7 @@ namespace KanBanVersion2.WebApp.Models
 {
     public class CacheHelper
     {
+        
         public static List<Proje> GetProjectFromCache()
         {
             var result = WebCache.Get("Proje-cache");

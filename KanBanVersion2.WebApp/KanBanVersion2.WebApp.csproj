@@ -291,6 +291,7 @@
     <Content Include="Views\Home\AccessDenied.cshtml" />
     <Content Include="Views\Home\Exception.cshtml" />
     <Content Include="Views\Home\SelectProject.cshtml" />
+    <Content Include="Views\Shared\_LayoutForProfil.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

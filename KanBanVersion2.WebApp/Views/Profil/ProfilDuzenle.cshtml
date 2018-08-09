@@ -89,10 +89,10 @@
 
                         <button type="submit" class="btn btn-outline-success " href="Profile/Profil">Kaydet</button>
 
-                        @Html.ActionLink("İptal", "Profil", "Profil", null, new { @class = "btn btn-outline-danger" })
+                        @Html.ActionLink("İptal", "SelectProject", "Profil", null, new { @class = "btn btn-outline-danger" })
 
                         <a class="btn btn-outline-danger" href="@Url.Action("ProfilSil")" onclick="return confirm('Hesabınızı silmek istediğinizden emin misiniz?');">Sil</a>
-                        @*@Html.ActionLink("Sil", "ProfilSil", "Profile", null, new { @class = "btn btn-outline-danger " },null,null, onclick = "return confirm('Hesabınızı silmek istediğinizden emin misiniz?');")*@
+                       
                     </div>
 
                 </form>

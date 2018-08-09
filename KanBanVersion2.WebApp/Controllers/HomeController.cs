@@ -25,8 +25,23 @@ namespace KanBanVersion2.WebApp.Controllers
         TodoManager tm = new TodoManager();
         ProjectManager pm = new ProjectManager();
         KullaniciManager km = new KullaniciManager();
+        TodoUserManager tum = new TodoUserManager();
 
-        
+        [Route("Home/TodoDurum/{id}/{todoid}")]
+        public ActionResult TodoDurum(int? id, int todoid)
+        {
+            if(id == -1)
+            {
+                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Todo todo = tm.Find(x => x.Id==todoid );
+            todo.todoDurumu = (todoDurum)id;
+
+            tm.Update(todo);
+
+           
+            return RedirectToAction("Todo");
+        }
          
         public ActionResult Todo(Proje p)
         {
@@ -89,7 +104,6 @@ namespace KanBanVersion2.WebApp.Controllers
             CurrentSession.kullanici.secilenProje = p;
 
             return RedirectToAction("Todo");
-          //  return View("Todo", p.Todo.Where(x => x.taslakDurum == false && x.todoDurumu == todoDurum.TODO).OrderByDescending(x=> x.guncellemeTarihi).ToList());
          }
 
 

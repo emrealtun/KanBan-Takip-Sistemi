@@ -17,7 +17,14 @@ namespace KanBanVersion2.WebApp
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Login", id = UrlParameter.Optional }
-            );
+            
+                );
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}/{todoid}",
+            //    defaults: new { controller = "Home", action = "TodoDurum", id = UrlParameter.Optional }
+
+            //    );
         }
     }
 }

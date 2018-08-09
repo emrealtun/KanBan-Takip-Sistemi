@@ -62,7 +62,6 @@ namespace KanBanVersion2.WebApp.Controllers
 
                 return RedirectToAction("Index");
             }
-
             ViewBag.projeId = new SelectList(CacheHelper.GetProjectFromCache(), "Id", "projeAd", todo.projeId);
             return View(todo);
         }
